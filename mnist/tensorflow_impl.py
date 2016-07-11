@@ -80,8 +80,8 @@ def build_graph():
     return x, y_, keep_prob, train_step, num_correct
 
 def main():
-    NUM_EPOCHS = 20
-    data = Data(batch_size=50, validation_size=6000)
+    NUM_EPOCHS = 30
+    data = Data(batch_size=64, validation_size=6000)
 
     session = tf.Session()
     input_placeholder, output_placeholder, keep_prob_placeholder, train_step_f, num_correct_f = build_graph()
@@ -93,6 +93,7 @@ def main():
         num_total   = 0
         num_correct = 0
         for batch_x, batch_y in data_iter:
+            print 'batch'
             batch_num_correct, _ = session.run(
                 [num_correct_f, train_step_f if train else noop],
                 {

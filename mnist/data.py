@@ -17,6 +17,10 @@ class Data(object):
         Y = np.zeros((len(Y_labels), 10))
         Y[range(len(Y_labels)), Y_labels.astype(np.int32)] = 1.
 
+        # ensure type is float32
+        X = X.astype(np.float32)
+        Y = Y.astype(np.float32)
+
         # shuffle examples
         permutation = np.random.permutation(len(X))
         X = X[permutation]
